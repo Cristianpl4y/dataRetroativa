@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo</title>
+</head>
+
+<body>
+    <h1>Não permitir data retroativa no campo tipo date</h1>
+    <hr>
+    <div>
+        <label for="meuInputData">Data:</label>
+        <input type="date" id="meuInputData" name="meuInputData" />
+    </div>
+    <hr>
+</body>
+
+<!--Em this.value = [agora.getFullYear(), agora.getMonth() + 1, agora.getDate()].map(v => v < 10 ? '0' + v : v).join('-'); repoõe a data escolhida com a data atual, mas
+se você quiser somente apagar não deixando datas menores que hoje pode fazer this.value = '';-->
+<script type="text/JavaScript">
+    var input = document.getElementById('meuInputData');
+    input.addEventListener('change', function() {
+    var agora = new Date();
+    var escolhida = new Date(this.value);
+    if (escolhida < agora) 
+        this.value = [agora.getFullYear(), agora.getMonth() + 1, agora.getDate()].map(v => v < 10 ? '0' + v : v).join('-');
+        // this.value = '';
+    }); 
+</script>
+
+</html>
